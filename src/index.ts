@@ -178,10 +178,6 @@ class VimCell {
             });
             lvim.mapCommand('<C-e>', 'action', 'moveCellDown', {}, {extra: 'normal'});
             lvim.mapCommand('<C-y>', 'action', 'moveCellUp', {}, {extra: 'normal'});
-            lvim.defineAction('splitCell', (cm: any, actionArgs: any) => {
-                commands.execute('notebook:split-cell-at-cursor');
-            });
-            lvim.mapCommand('-', 'action', 'splitCell', {}, {extra: 'normal'});
         }
     }
 
@@ -404,11 +400,6 @@ function activateCellVim(app: JupyterFrontEnd, tracker: INotebookTracker): Promi
             selector: '.jp-Notebook.jp-mod-editMode',
             keys: ['Ctrl O', 'U'],
             command: 'notebook:undo-cell-action'
-        });
-        commands.addKeyBinding({
-            selector: '.jp-Notebook.jp-mod-editMode',
-            keys: ['Ctrl O', '-'],
-            command: 'notebook:split-cell-at-cursor'
         });
         commands.addKeyBinding({
             selector: '.jp-Notebook.jp-mod-editMode',
